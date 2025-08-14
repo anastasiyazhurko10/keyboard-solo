@@ -6,7 +6,6 @@ const wrongCountEl = document.querySelector('.wrong-count');
 const wordMistakesEl = document.querySelector('.word-mistakes');
 const timerEl = document.querySelector('#timer');
 
-
 let currentWord = '';
 let currentIndex = 0;
 let mistakesInWord = 0;
@@ -47,27 +46,31 @@ document.addEventListener('keydown', (event) => {
   const inputChar = event.key;
 
   if (inputChar === expectedChar) {
-    spans[currentIndex].classList.add('c');
+    spans[currentIndex].classList.remove('w'); // убрать красный, если был
+    spans[currentIndex].classList.add('c');    // добавить зелёный
     currentIndex++;
 
     if (currentIndex === currentWord.length) {
-      correctCountEl.textContent = +correctCountEl.textContent + 1;
+      // всё слово введено
+      if (mistakesInWord === 0) {
+        correctWords++;
+        correctCountEl.textContent = correctWords;
+      } else {
+        wrongWords++;
+        wrongCountEl.textContent = wrongWords;
+      }
+
+      checkGameStatus();
       setTimeout(initWord, 500);
     }
   } else {
     spans[currentIndex].classList.add('w');
     mistakesInWord++;
     wordMistakesEl.textContent = mistakesInWord;
+
     setTimeout(() => {
       spans[currentIndex].classList.remove('w');
     }, 300);
-
-    if (mistakesInWord === 3) {
-        wrongWords++;
-        wrongCountEl.textContent = wrongWords;
-        checkGameStatus();
-        setTimeout(initWord, 500);
-    }
   }
 });
 
@@ -92,6 +95,10 @@ function resetGame() {
   wrongCountEl.textContent = '0';
   wordMistakesEl.textContent = '0';
   updateTimerDisplay();
+
+  clearInterval(timerInterval);
+  startTimer();
+  initWord();
 }
 
 function startTimer() {

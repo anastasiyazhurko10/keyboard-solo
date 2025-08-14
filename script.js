@@ -105,5 +105,5 @@ function updateTimerDisplay() {
   timerEl.textContent = `${mins}:${secs}`;
 }
 
-
 initWord();
+startTimer();

@@ -92,5 +92,18 @@ function resetGame() {
   updateTimerDisplay();
 }
 
+function startTimer() {
+  timerInterval = setInterval(() => {
+    seconds++;
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+  const secs = String(seconds % 60).padStart(2, '0');
+  timerEl.textContent = `${mins}:${secs}`;
+}
+
 
 initWord();

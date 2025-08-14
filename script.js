@@ -31,3 +31,29 @@ function initWord() {
   wordMistakesEl.textContent = '0';
   renderWord(currentWord);
 }
+
+document.addEventListener('keydown', (event) => {
+  const spans = wordContainer.querySelectorAll('span');
+  const expectedChar = currentWord[currentIndex];
+
+  if (!expectedChar) return;
+
+  const inputChar = event.key;
+
+  if (inputChar === expectedChar) {
+    spans[currentIndex].classList.add('c');
+    currentIndex++;
+
+    if (currentIndex === currentWord.length) {
+      correctCountEl.textContent = +correctCountEl.textContent + 1;
+      setTimeout(initWord, 500);
+    }
+  } else {
+    spans[currentIndex].classList.add('w');
+    mistakesInWord++;
+    wordMistakesEl.textContent = mistakesInWord;
+    setTimeout(() => {
+      spans[currentIndex].classList.remove('w');
+    }, 300);
+  }
+});

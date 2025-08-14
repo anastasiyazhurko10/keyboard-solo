@@ -23,3 +23,11 @@ function renderWord(word) {
     wordContainer.appendChild(span);
   }
 }
+
+function initWord() {
+  currentWord = getRandomWord();
+  currentIndex = 0;
+  mistakesInWord = 0;
+  wordMistakesEl.textContent = '0';
+  renderWord(currentWord);
+}

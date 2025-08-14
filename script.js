@@ -59,7 +59,16 @@ document.addEventListener('keydown', (event) => {
     setTimeout(() => {
       spans[currentIndex].classList.remove('w');
     }, 300);
+
+    if (mistakesInWord === 3) {
+        wrongWords++;
+        wrongCountEl.textContent = wrongWords;
+        checkGameStatus();
+        setTimeout(initWord, 500);
+    }
   }
 });
+
+
 
 initWord();

@@ -79,5 +79,18 @@ function checkGameStatus() {
   }
 }
 
+function resetGame() {
+  correctWords = 0;
+  wrongWords = 0;
+  mistakesInWord = 0;
+  currentIndex = 0;
+  seconds = 0;
+
+  correctCountEl.textContent = '0';
+  wrongCountEl.textContent = '0';
+  wordMistakesEl.textContent = '0';
+  updateTimerDisplay();
+}
+
 
 initWord();

@@ -69,6 +69,15 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+function checkGameStatus() {
+  if (correctWords === 5) {
+    alert('🎉 Победа! Вы ввели 5 слов правильно.');
+    resetGame();
+  } else if (wrongWords === 5) {
+    alert('😢 Поражение. 5 слов введены с ошибками.');
+    resetGame();
+  }
+}
 
 
 initWord();

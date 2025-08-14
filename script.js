@@ -4,6 +4,8 @@ const wordContainer = document.querySelector('.word');
 const correctCountEl = document.querySelector('.correct-count');
 const wrongCountEl = document.querySelector('.wrong-count');
 const wordMistakesEl = document.querySelector('.word-mistakes');
+const timerEl = document.querySelector('#timer');
+
 
 let currentWord = '';
 let currentIndex = 0;

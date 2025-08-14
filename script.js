@@ -57,3 +57,5 @@ document.addEventListener('keydown', (event) => {
     }, 300);
   }
 });
+
+initWord();

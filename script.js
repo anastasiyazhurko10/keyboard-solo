@@ -8,6 +8,10 @@ const wordMistakesEl = document.querySelector('.word-mistakes');
 let currentWord = '';
 let currentIndex = 0;
 let mistakesInWord = 0;
+let correctWords = 0;
+let wrongWords = 0;
+let seconds = 0;
+let timerInterval;
 
 function getRandomWord() {
   const index = Math.floor(Math.random() * words.length);

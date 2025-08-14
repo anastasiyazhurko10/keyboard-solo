@@ -13,3 +13,13 @@ function getRandomWord() {
   const index = Math.floor(Math.random() * words.length);
   return words[index];
 }
+
+function renderWord(word) {
+  wordContainer.innerHTML = '';
+  for (const char of word) {
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.classList.add('symbol');
+    wordContainer.appendChild(span);
+  }
+}

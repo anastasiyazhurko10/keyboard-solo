@@ -35,6 +35,7 @@ function initWord() {
   mistakesInWord = 0;
   wordMistakesEl.textContent = '0';
   renderWord(currentWord);
+  checkGameStatus();
 }
 
 document.addEventListener('keydown', (event) => {
@@ -60,7 +61,6 @@ document.addEventListener('keydown', (event) => {
         wrongCountEl.textContent = wrongWords;
       }
 
-      checkGameStatus();
       setTimeout(initWord, 500);
     }
   } else {
